@@ -10,23 +10,9 @@
 #define LED2_TERMINAL PF2
 #define LED3_TERMINAL PF3
 
-#define LIGHT_SWITCHES_DDR DDRJ
-#define LIGHT_SWITCHES_PORT PORTJ
-#define LIGHT_SWITCHES_PIN PINJ
-#define LIGHT1_SWITCH PJ0
-#define LIGHT2_SWITCH PJ1
-#define LIGHT3_SWITCH PJ2
-
 #define LDR_TERMINAL 0
 
 #define RX_BUFFER_SIZE 32
-
-#define DEBOUNCE_TIME_MS 20
-
-//light switches' global variables
-volatile uint8_t light1_switch_counter = 0;
-volatile uint8_t light2_switch_counter = 0;
-volatile uint8_t light3_switch_counter = 0;
 
 //ADC Global Variables
 volatile uint16_t adc_results[16];
@@ -168,54 +154,6 @@ int main(void)
 
 		}
 		
-		/*
-		if (!(LIGHT_SWITCHES_PIN & (1<<LIGHT1_SWITCH)))
-		{
-			if (light1_switch_counter < DEBOUNCE_TIME_MS)
-			{
-				light1_switch_counter++;
-			} else
-			{
-				led_states[0].current_state = 1;
-				led_states[0].mannual_override_active = 1;
-			}
-		} else
-		{
-			led_states[0].current_state = 0;
-			light1_switch_counter = 0;
-		}
-		
-		if (!(LIGHT_SWITCHES_PIN & (1<<LIGHT2_SWITCH)))
-		{
-			if (light2_switch_counter < DEBOUNCE_TIME_MS)
-			{
-				light2_switch_counter++;
-			} else
-			{
-				led_states[1].current_state = 1;
-				led_states[1].mannual_override_active = 1;
-			}
-		} else
-		{
-			led_states[1].current_state = 0;
-		}
-		
-		if (!(LIGHT_SWITCHES_PIN & (1<<LIGHT3_SWITCH)))
-		{
-			if (light3_switch_counter < 20)
-			{
-				light3_switch_counter++;
-			} else
-			{
-				led_states[2].current_state = 1;
-				led_states[2].mannual_override_active = 1;
-			}
-		} else
-		{
-			light3_switch_counter = 0;
-			led_states[2].current_state = 0;
-		}
-		*/
 		
 		for (int i = 0; i < 3; i++)
 		{
